@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
 
     public float zMin;
-    public float zmax;
+    public float zMax;
     public float verticalInput;
 
 
@@ -31,6 +31,16 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.z <zMin)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zMax);
+        }
+        
+        if(transform.position.z >zMax)
+        {
+
         }
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
